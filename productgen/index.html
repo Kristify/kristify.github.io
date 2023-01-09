@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kristify Product Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="modal position-static d-block bg-success py-5" tabindex="-1" role="dialog" id="main">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content rounded-4 shadow pb-3 mb-5">
+          <form class="was-validated">
+            <div class="modal-body p-5 pt-0 pb-0">
+              <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Kristify Product Generator</h1>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="displayName" v-model="displayName" required />
+                <div class="invalid-feedback">This field is required.</div>
+                <label for="displayName">Display name</label>
+                <div class="form-text pt-0 pb-3">The displayname that will be shown on the monitor</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control rounded-3" id="price" v-model="price" step="0.000001" required />
+                <div class="invalid-feedback">This field is required.</div>
+                <label for="price">Price</label>
+                <div class="form-text pt-0 pb-3">The price in krist</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <select class="form-select rounded-3" id="color" v-model="color">
+                  <option value="nil" selected>Themes default</option>
+                  <option value='"cyan"'>cyan</option>
+                  <option value='"purple"'>purple</option>
+                  <option value='"brown"'>brown</option>
+                  <option value='"orange"'>orange</option>
+                  <option value='"red"'>red</option>
+                  <option value='"gray"'>gray</option>
+                  <option value='"magenta"'>magenta</option>
+                  <option value='"blue"'>blue</option>
+                  <option value='"lightBlue"'>lightBlue</option>
+                  <option value='"green"'>green</option>
+                  <option value='"lightGray"'>lightGray</option>
+                  <option value='"pink"'>pink</option>
+                  <option value='"black"'>black</option>
+                  <option value='"yellow"'>yellow</option>
+                  <option value='"lime"'>lime</option>
+                  <option value='"white"'>white</option>
+                </select>
+                <label for="color">Color</label>
+                <div class="form-text pt-0 pb-3">The color for the Display Name</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="id" v-model="id" required />
+                <div class="invalid-feedback">This field is required.</div>
+                <label for="id">Item ID</label>
+                <div class="form-text pt-0 pb-3">The ID of the item you want to sell</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="metaname" v-model="metaname" required />
+                <div class="invalid-feedback">This field is required.</div>
+                <label for="metaname">Metaname</label>
+                <div class="form-text pt-0 pb-3">The part you want to be before @name.kst</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="nbt" v-model="nbt" />
+                <label for="nbt">NBT Hash</label>
+                <div class="form-text pt-0 pb-3">
+                  If your item has NBT data, you need to put the NBT hash here. If it does not have NBT, leave this
+                  blank.
+                </div>
+              </div>
+
+              <hr />
+              <button type="button" class="btn btn-primary mb-5 mt-2" @click="generate">Generate config</button>
+              <pre>{{result}}</pre>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script defer type="module" src="script.js"></script>
+  </body>
+</html>
